@@ -5,6 +5,7 @@ This is a fork of the [KeyboardMF project](https://github.com/VolosR/KeyboardMF/
 1. Migration to PlatformIO build system
 2. Integration of LVGL v9.2.2 configuration
 3. Improved project structure following PlatformIO conventions
+4. Comprehensive documentation and diagrams
 
 ## Hardware Requirements
 
@@ -29,26 +30,88 @@ This project uses PlatformIO for development. The main configurations include:
 
 ### Dependencies
 
-- LovyanGFX (v1.1.9) - Graphics library
-- NeoPixelBus (v2.7.6) - LED control
-- LVGL (v9.2.2) - UI framework
-- EspUsbHost (v1.0.2) - USB Host functionality
+- LovyanGFX (v1.1.9) - Graphics library for display handling
+- NeoPixelBus (v2.7.6) - LED control and effects
+- LVGL (v9.2.2) - Modern UI framework
+- EspUsbHost (v1.0.2) - USB Host functionality for keyboard input
 
-## Development
+## Project Structure
 
-The project is structured using PlatformIO's standard layout:
+The project follows PlatformIO's standard layout with additional documentation:
 
-- `/src` - Main source code
-- `/include` - Header files (including LVGL configuration)
-- `/lib` - Project-specific libraries
-- `/test` - Test files
+```
+KeyboardMF/
+├── src/                    # Main source code
+│   ├── KeyboardManager.cpp # USB keyboard handling
+│   ├── Display.cpp        # Display operations
+│   ├── TextEditor.cpp     # Text editing functionality
+│   ├── FileManager.cpp    # File operations
+│   └── NeoPixelManager.cpp# LED control
+├── include/               # Header files
+│   ├── KeyboardConfig.hpp # Configuration constants
+│   ├── lv_conf.h         # LVGL configuration
+│   └── *.hpp             # Component headers
+├── doc/                   # Documentation
+│   └── system_diagrams.md # Class and sequence diagrams
+├── lib/                   # Project-specific libraries
+├── test/                  # Test files
+└── platformio.ini         # PlatformIO configuration
+```
 
 ## Building and Flashing
 
-1. Open the project in PlatformIO
-2. Build using the PlatformIO build command
-3. Upload to your ESP32-S3 board using either USB port (USB-to-UART or native USB)
+1. Install PlatformIO IDE (VS Code extension) or CLI
+2. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/KeyboardMF.git
+   cd KeyboardMF
+   ```
+3. Build the project:
+   ```bash
+   pio run
+   ```
+4. Upload to your ESP32-S3 board:
+   ```bash
+   pio run --target upload
+   ```
+
+## Documentation
+
+- Complete system documentation with class and sequence diagrams is available in the `doc/` directory
+- The diagrams are in Mermaid format and can be viewed directly on GitHub
+- Component interactions and dependencies are fully documented
+
+## Changelog
+
+### [2024-12-27] - Major Refactor: PlatformIO Port
+
+- Migrated build system to PlatformIO
+- Updated to LVGL v9.2.2
+- Restructured project following PlatformIO conventions
+- Added comprehensive system documentation and diagrams
+- Improved code organization with proper namespacing
+- Enhanced error handling and initialization sequences
+
+### [2024-12-27] - Initial Fork
+
+- Created fork from original KeyboardMF project
+- Initial files upload
+- Base ESP32-S3 configuration
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
 This project maintains the same license as the original KeyboardMF project.
+
+## Acknowledgments
+
+- Original [KeyboardMF project](https://github.com/VolosR/KeyboardMF/tree/main) by VolosR
+- [Makerfabs](https://www.makerfabs.com/) for the ESP32-S3 hardware
+- All contributors to the dependent libraries
